@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spending-analysis
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}}:5432/spending_analysis
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
