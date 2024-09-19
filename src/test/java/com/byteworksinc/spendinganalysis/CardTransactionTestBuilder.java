@@ -26,7 +26,7 @@ public class CardTransactionTestBuilder {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH) + 1;
         UUID uuid = UUID.randomUUID();
-        return new CreditCardTransaction(uuid.toString(), date, year, month, chargeCard, description, amount, null, null);
+        return new CreditCardTransaction(uuid.toString(), date, year, month, chargeCard, description, amount);
     }
 
     public static CreditCardTransaction build() {

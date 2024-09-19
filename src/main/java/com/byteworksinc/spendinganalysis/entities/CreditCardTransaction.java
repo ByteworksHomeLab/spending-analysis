@@ -19,4 +19,25 @@ public record CreditCardTransaction(@Id String id,
                                     Category category,
                                     @Version
                                     Integer version) {
+
+    public CreditCardTransaction(String id,
+                                 @NotEmpty Date transactionDate,
+                                 @NotEmpty int statementYear,
+                                 @NotEmpty int statementMonth,
+                                 @NotEmpty ChargeCard chargeCard,
+                                 @NotEmpty String description,
+                                 @NotEmpty BigDecimal transactionAmount,
+                                 Category category) {
+        this(id, transactionDate, statementYear, statementMonth, chargeCard, description, transactionAmount, category, null);
+    }
+
+    public CreditCardTransaction(String id,
+                                 @NotEmpty Date transactionDate,
+                                 @NotEmpty int statementYear,
+                                 @NotEmpty int statementMonth,
+                                 @NotEmpty ChargeCard chargeCard,
+                                 @NotEmpty String description,
+                                 @NotEmpty BigDecimal transactionAmount) {
+        this(id, transactionDate, statementYear, statementMonth, chargeCard, description, transactionAmount, null, null);
+    }
 }
