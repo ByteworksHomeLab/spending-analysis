@@ -1,3 +1,10 @@
+INSERT INTO credit_card_directory (id, credit_card, classpath, file_extension, name_pattern)
+VALUES
+('e64abd8a-af20-47c0-a468-5b5a5631fdc6','Amex','data/Amex','CSV','yyyy-MM'),
+('9586aaa7-bc91-4ba1-9f2d-42e6af5e468f','AppleCard','data/AppleCard','CSV','yyyy-MM'),
+('af303b4a-dfd8-443a-b876-6fe2f7be1eaa','ChaseFreedom','data/ChaseFreedom','CSV','yyyy-MM');
+
+
 INSERT INTO transaction_category ( id, category, description )
 VALUES ('e64abd8a-af20-47c0-a468-5b5a5631fdc6','Alcohol','Alcohol purchases'),
     ('af303b4a-dfd8-443a-b876-6fe2f7be1eaa','Automotive','Automotive purchases'),

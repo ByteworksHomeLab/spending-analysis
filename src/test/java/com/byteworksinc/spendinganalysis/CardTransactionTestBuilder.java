@@ -1,7 +1,7 @@
 package com.byteworksinc.spendinganalysis;
 
 import com.byteworksinc.spendinganalysis.entities.CreditCardTransaction;
-import com.byteworksinc.spendinganalysis.models.ChargeCard;
+import com.byteworksinc.spendinganalysis.models.CreditCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class CardTransactionTestBuilder {
 
     private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
-    public static CreditCardTransaction build(Date date, ChargeCard chargeCard, String description, BigDecimal amount) {
+    public static CreditCardTransaction build(Date date, CreditCard chargeCard, String description, BigDecimal amount) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
@@ -32,7 +32,7 @@ public class CardTransactionTestBuilder {
     public static CreditCardTransaction build() {
         CreditCardTransaction listing = null;
         try {
-            listing = build(formatter.parse("2024-01-13"), ChargeCard.APPLE, "Price Chopper", BigDecimal.valueOf(48.73).setScale(2, RoundingMode.HALF_UP));
+            listing = build(formatter.parse("2024-01-13"), CreditCard.AppleCard, "Price Chopper", BigDecimal.valueOf(48.73).setScale(2, RoundingMode.HALF_UP));
         } catch (ParseException e) {
             log.warn("Could not parse transaction date", e);
         }

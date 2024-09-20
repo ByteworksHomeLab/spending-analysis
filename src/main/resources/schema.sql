@@ -1,3 +1,15 @@
+CREATE TABLE IF NOT EXISTS credit_card_directory
+(
+    id             TEXT NOT NULL,
+    credit_card    TEXT NOT NULL,
+    classpath      TEXT NOT NULL,
+    file_extension TEXT NOT NULL,
+    name_pattern   TEXT NOT NULL,
+    version        INTEGER NULL,
+    UNIQUE (credit_card),
+    CONSTRAINT "PKCardDirectory_01" PRIMARY KEY ("id")
+);
+
 
 CREATE TABLE IF NOT EXISTS transaction_category
 (

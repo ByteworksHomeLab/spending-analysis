@@ -1,7 +1,6 @@
 package com.byteworksinc.spendinganalysis.entities;
 
-import com.byteworksinc.spendinganalysis.models.Category;
-import com.byteworksinc.spendinganalysis.models.ChargeCard;
+import com.byteworksinc.spendinganalysis.models.CreditCard;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
@@ -15,7 +14,7 @@ public record CreditCardTransaction(@Id String id,
                                     @NotEmpty Date transactionDate,
                                     @NotEmpty int statementYear,
                                     @NotEmpty int statementMonth,
-                                    @NotEmpty ChargeCard chargeCard,
+                                    @NotEmpty CreditCard chargeCard,
                                     @NotEmpty String description,
                                     @NotEmpty BigDecimal transactionAmount,
                                     String transactionCategoryId,
@@ -26,7 +25,7 @@ public record CreditCardTransaction(@Id String id,
                                  @NotEmpty Date transactionDate,
                                  @NotEmpty int statementYear,
                                  @NotEmpty int statementMonth,
-                                 @NotEmpty ChargeCard chargeCard,
+                                 @NotEmpty CreditCard chargeCard,
                                  @NotEmpty String description,
                                  @NotEmpty BigDecimal transactionAmount,
                                  String transactionCategoryId) {
@@ -37,7 +36,7 @@ public record CreditCardTransaction(@Id String id,
                                  @NotEmpty Date transactionDate,
                                  @NotEmpty int statementYear,
                                  @NotEmpty int statementMonth,
-                                 @NotEmpty ChargeCard chargeCard,
+                                 @NotEmpty CreditCard chargeCard,
                                  @NotEmpty String description,
                                  @NotEmpty BigDecimal transactionAmount) {
         this(id, transactionDate, statementYear, statementMonth, chargeCard, description, transactionAmount, null, null);

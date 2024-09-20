@@ -10,6 +10,5 @@ import java.util.Optional;
 
 public interface TransactionCategoryRepository extends ListCrudRepository<TransactionCategory, String> {
 
-    @Query("SELECT * FROM transaction_category WHERE category = :category")
-    Optional<TransactionCategory> findTransactionCategoriesByCategory(@Param("category") String category);
+    TransactionCategory findByCategory(@Param("category") String category);
 }

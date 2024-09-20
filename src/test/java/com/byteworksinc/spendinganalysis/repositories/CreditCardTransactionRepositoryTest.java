@@ -3,20 +3,17 @@ package com.byteworksinc.spendinganalysis.repositories;
 import com.byteworksinc.spendinganalysis.CardTransactionTestBuilder;
 import com.byteworksinc.spendinganalysis.entities.CreditCardTransaction;
 import com.byteworksinc.spendinganalysis.entities.TransactionCategory;
-import com.byteworksinc.spendinganalysis.models.Category;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.text.ParseException;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,8 +60,8 @@ public class CreditCardTransactionRepositoryTest {
         CreditCardTransaction cardTransaction = CardTransactionTestBuilder.build();
         CreditCardTransaction saved = creditCardTransactionRepository.save(cardTransaction);
         assertNotNull(saved, "Expected a cardTransactionTestBuilder but found none.");
-
-        TransactionCategory transactionCategory = new TransactionCategory("006e0d8d-545e-4f0c-9e0b-693fef975yt3", "Hats", "Hat purchases");
+        UUID uuid = UUID.randomUUID();
+        TransactionCategory transactionCategory = new TransactionCategory(uuid.toString(), "Hats", "Hat purchases");
         TransactionCategory groceries = transactionCategoryRepository.save(transactionCategory);
         creditCardTransactionRepository.updateCategory(saved.id(), groceries.id());
         Optional<CreditCardTransaction> result = creditCardTransactionRepository.findById(saved.id());
