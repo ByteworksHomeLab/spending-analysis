@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 public interface CreditCardTransactionRepository extends ListCrudRepository<CreditCardTransaction, String> {
 
     @Modifying
-    @Query("UPDATE public.credit_card_transaction SET category = :category WHERE id = :id ")
-    void updateCategory(@Param("id") String id, @Param("category") Category category);
+    @Query("UPDATE public.credit_card_transaction SET transaction_category_id = :transactionCategoryId WHERE id = :id ")
+    void updateCategory(@Param("id") String id, @Param("transactionCategoryId") String transactionCategoryId);
 
 }

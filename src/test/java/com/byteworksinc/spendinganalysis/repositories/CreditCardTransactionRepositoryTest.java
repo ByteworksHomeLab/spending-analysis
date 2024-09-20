@@ -2,6 +2,7 @@ package com.byteworksinc.spendinganalysis.repositories;
 
 import com.byteworksinc.spendinganalysis.CardTransactionTestBuilder;
 import com.byteworksinc.spendinganalysis.entities.CreditCardTransaction;
+import com.byteworksinc.spendinganalysis.entities.TransactionCategory;
 import com.byteworksinc.spendinganalysis.models.Category;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class CreditCardTransactionRepositoryTest {
     @Autowired
     private CreditCardTransactionRepository creditCardTransactionRepository;
 
+    @Autowired
+    private TransactionCategoryRepository transactionCategoryRepository;
+
     @Test
     void connectionEstablished() {
         assertThat(postgres.isCreated()).isTrue();
@@ -40,7 +44,7 @@ public class CreditCardTransactionRepositoryTest {
 
 
     @Test
-    public void testInsertTransaction() throws ParseException {
+    public void testInsertTransaction() {
         creditCardTransactionRepository.deleteAll();
         CreditCardTransaction cardTransaction = CardTransactionTestBuilder.build();
         CreditCardTransaction saved = creditCardTransactionRepository.save(cardTransaction);
@@ -54,16 +58,18 @@ public class CreditCardTransactionRepositoryTest {
     }
 
     @Test
-    public void testUpdateCategory() throws ParseException {
+    public void testUpdateCategory() {
         creditCardTransactionRepository.deleteAll();
         CreditCardTransaction cardTransaction = CardTransactionTestBuilder.build();
         CreditCardTransaction saved = creditCardTransactionRepository.save(cardTransaction);
         assertNotNull(saved, "Expected a cardTransactionTestBuilder but found none.");
 
-        creditCardTransactionRepository.updateCategory(saved.id(), Category.FOOD);
+        TransactionCategory transactionCategory = new TransactionCategory("006e0d8d-545e-4f0c-9e0b-693fef975yt3", "Hats", "Hat purchases");
+        TransactionCategory groceries = transactionCategoryRepository.save(transactionCategory);
+        creditCardTransactionRepository.updateCategory(saved.id(), groceries.id());
         Optional<CreditCardTransaction> result = creditCardTransactionRepository.findById(saved.id());
         assertTrue(result.isPresent(), "Expected to find a CreditCardTransaction by ID. but found none.");
-        assertEquals(Category.FOOD, result.get().category());
+        assertEquals(groceries.id(), result.get().transactionCategoryId());
     }
 
 }

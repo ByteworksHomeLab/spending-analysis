@@ -5,10 +5,12 @@ import com.byteworksinc.spendinganalysis.models.ChargeCard;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Table("credit_card_transaction")
 public record CreditCardTransaction(@Id String id,
                                     @NotEmpty Date transactionDate,
                                     @NotEmpty int statementYear,
@@ -16,7 +18,7 @@ public record CreditCardTransaction(@Id String id,
                                     @NotEmpty ChargeCard chargeCard,
                                     @NotEmpty String description,
                                     @NotEmpty BigDecimal transactionAmount,
-                                    Category category,
+                                    String transactionCategoryId,
                                     @Version
                                     Integer version) {
 
@@ -27,8 +29,8 @@ public record CreditCardTransaction(@Id String id,
                                  @NotEmpty ChargeCard chargeCard,
                                  @NotEmpty String description,
                                  @NotEmpty BigDecimal transactionAmount,
-                                 Category category) {
-        this(id, transactionDate, statementYear, statementMonth, chargeCard, description, transactionAmount, category, null);
+                                 String transactionCategoryId) {
+        this(id, transactionDate, statementYear, statementMonth, chargeCard, description, transactionAmount, transactionCategoryId, null);
     }
 
     public CreditCardTransaction(String id,
