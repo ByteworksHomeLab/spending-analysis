@@ -32,3 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 /.env
+/src/main/resources/data/ChaseFreedom/*.*
+/src/main/resources/data/AppleCard/*.*
+/src/main/resources/data/Amex/*.*
+
