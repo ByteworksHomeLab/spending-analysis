@@ -29,7 +29,8 @@ VALUES ('e64abd8a-af20-47c0-a468-5b5a5631fdc6','Alcohol','Alcohol purchases'),
     ('8ff2a4cd-3090-4f01-a80e-b046ee547c54','Subscriptions','Subscription purchases'),
     ('94d6e555-98f5-42be-b872-39e6ca091f84','Travel','Travel purchases'),
     ('a638ac55-8021-4f8b-9ea5-217aa15a5ec5','Utilities','Utility purchases'),
-    ('2ee601e8-2a95-4f82-b282-dca8be3c7cfa','Other','Other purchases');
+    ('2ee601e8-2a95-4f82-b282-dca8be3c7cfa','Other','Other purchases'),
+    ('3ba4e2e1-0a1e-4ad8-8f2e-4b951654392f','Uncategorized','Uncategorized transactions');
 
 INSERT INTO credit_card_transaction
 (    id,
